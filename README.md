@@ -4,7 +4,7 @@ Aplicacao web para gestao de obras e processos da construcao civil. O projeto co
 
 ## Visao geral
 
-O sistema foi construido como um frontend React que consome diretamente a camada de dados da Lumi via SDK. A aplicacao organiza o fluxo da operacao em modulos independentes, com autenticacao, controle de acesso por perfil e entidades descritas em arquivos JSON.
+O sistema foi construido como um frontend React que consome diretamente a camada de dados via SDK. A aplicacao organiza o fluxo da operacao em modulos independentes, com autenticacao, controle de acesso por perfil e entidades descritas em arquivos JSON.
 
 ## Tecnologias utilizadas
 
