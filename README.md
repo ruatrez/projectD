@@ -96,7 +96,7 @@ Perfis identificados no codigo:
 |  |- components/        # modulos principais da interface
 |  |- contexts/          # autenticacao e estado global
 |  |- entities/          # schemas JSON das entidades
-|  |- lib/               # cliente Lumi e utilitarios
+|  |- lib/               # cliente do Banco de Dados e utilitarios
 |  |- pages/             # variacoes e paginas especificas
 |  |- App.tsx            # composicao de rotas
 |  |- main.tsx           # bootstrap da aplicacao
