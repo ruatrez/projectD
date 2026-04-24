@@ -185,4 +185,4 @@ Se o projeto precisar ser promovido entre ambientes, esse e o primeiro ponto que
 
 ## Resumo da stack
 
-Projeto SPA em React + TypeScript, empacotado com Vite, estilizado com Tailwind CSS e integrado a plataforma Lumi para persistencia e modelagem de dados.
+Projeto SPA em React + TypeScript, empacotado com Vite, estilizado com Tailwind CSS e integrado ao banco de dados de propriedade da [RuatreZ](https://ruatrez.com/), para persistencia e modelagem de dados.
