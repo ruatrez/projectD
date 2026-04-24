@@ -178,7 +178,7 @@ Se o projeto precisar ser promovido entre ambientes, esse e o primeiro ponto que
 
 ## Observacoes tecnicas
 
-- O frontend faz acesso direto as entidades da Lumi; nao ha backend Node.js implementado neste repositorio.
+- O frontend faz acesso direto as entidades do banco de dados; nao ha backend Node.js implementado neste repositorio.
 - Ha uso forte de componentes grandes orientados a dominio, concentrando logica de interface e operacoes CRUD.
 - O projeto ja possui responsividade basica no layout principal, especialmente no menu lateral.
 - Existem duas implementacoes relacionadas a contratos (`components/Contratos.tsx` e `pages/ContratosV2.tsx`) e duas para planejamento (`PlanejamentoObra.tsx` e `PlanejamentoObraV2.tsx`), indicando evolucao incremental da interface.
