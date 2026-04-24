@@ -55,7 +55,7 @@ O sistema foi construido como um frontend React que consome diretamente a camada
 - As rotas sao definidas em `src/App.tsx`.
 - O layout autenticado fica em `src/components/Layout.tsx`.
 - A autenticacao e as permissoes ficam em `src/contexts/AuthContext.tsx`.
-- O cliente da Lumi esta centralizado em `src/lib/lumi.ts`.
+- O cliente do banco de dados esta centralizado em `src/lib/lumi.ts`.
 
 ### Camada de dados
 
