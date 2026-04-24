@@ -168,7 +168,7 @@ pnpm preview
 
 ## Configuracao atual
 
-Atualmente a integracao com a Lumi nao usa arquivo `.env`. A configuracao esta fixa em `src/lib/lumi.ts`, incluindo:
+Atualmente a integracao com o banco de dados nao usa arquivo `.env`. A configuracao esta fixa em `src/lib/lumi.ts`, incluindo:
 
 - `projectId`
 - `apiBaseUrl`
