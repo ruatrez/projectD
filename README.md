@@ -67,7 +67,7 @@ As entidades sao modeladas em arquivos como:
 - `src/entities/financeiro.json`
 - `src/entities/contratos.json`
 
-Esses arquivos definem validadores e estrutura dos dados consumidos pelo SDK da Lumi.
+Esses arquivos definem validadores e estrutura dos dados consumidos pelo SDK.
 
 ### Controle de acesso
 
