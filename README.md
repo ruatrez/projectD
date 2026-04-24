@@ -185,5 +185,5 @@ Se o projeto precisar ser promovido entre ambientes, esse e o primeiro ponto que
 
 ## Resumo da stack
 
-Projeto SPA em React + TypeScript, empacotado com Vite, estilizado com Tailwind CSS e integrado ao banco de dados de propriedade da <a href="https://ruatrez.com/" target="_blank" rel="noopener noreferrer">RuatreZ</a>
+Projeto SPA em React + TypeScript, empacotado com Vite, estilizado com Tailwind CSS e integrado ao banco de dados de propriedade da <a href="https://ruatrez.com/" target="_blank">RuatreZ</a>
 , para persistencia e modelagem de dados.
