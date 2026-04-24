@@ -1,0 +1,72 @@
+
+{
+  "name": "fornecedores",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["nome", "segmento", "grauConfiabilidade", "ativo", "criadoEm"],
+        "properties": {
+          "nome": {
+            "bsonType": "string",
+            "description": "Nome do fornecedor"
+          },
+          "segmento": {
+            "bsonType": "string",
+            "description": "Segmento de atuação"
+          },
+          "grauConfiabilidade": {
+            "bsonType": "int",
+            "minimum": 1,
+            "maximum": 5,
+            "description": "Grau de confiabilidade de 1 a 5"
+          },
+          "contato": {
+            "bsonType": "object",
+            "properties": {
+              "telefone": {"bsonType": "string"},
+              "email": {"bsonType": "string"},
+              "endereco": {"bsonType": "string"}
+            }
+          },
+          "ativo": {
+            "bsonType": "bool",
+            "description": "Status ativo/inativo"
+          },
+          "tempoMedioEntrega": {
+            "bsonType": "int",
+            "description": "Tempo médio de entrega em dias"
+          },
+          "precoMedio": {
+            "bsonType": "number",
+            "description": "Preço médio praticado"
+          },
+          "avaliacoes": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "data": {"bsonType": "string", "title": "datetime"},
+                "nota": {"bsonType": "int", "minimum": 1, "maximum": 5},
+                "comentario": {"bsonType": "string"}
+              }
+            }
+          },
+          "criadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "atualizadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

@@ -1,0 +1,75 @@
+
+{
+  "name": "templates_orcamento",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["nome", "descricao", "estrutura", "ativo", "criadoEm"],
+        "properties": {
+          "nome": {
+            "bsonType": "string",
+            "description": "Nome do template"
+          },
+          "descricao": {
+            "bsonType": "string",
+            "description": "Descrição do template"
+          },
+          "logoUrl": {
+            "bsonType": "string",
+            "description": "URL do logo da empresa"
+          },
+          "estrutura": {
+            "bsonType": "object",
+            "description": "Estrutura padrão do orçamento",
+            "properties": {
+              "cabecalho": {
+                "bsonType": "object",
+                "properties": {
+                  "titulo": { "bsonType": "string" },
+                  "subtitulo": { "bsonType": "string" },
+                  "informacoesEmpresa": { "bsonType": "string" }
+                }
+              },
+              "etapasPadrao": {
+                "bsonType": "array",
+                "description": "Etapas padrão do template"
+              },
+              "configuracoes": {
+                "bsonType": "object",
+                "properties": {
+                  "mostrarBDI": { "bsonType": "bool" },
+                  "mostrarMargem": { "bsonType": "bool" },
+                  "mostrarDesconto": { "bsonType": "bool" },
+                  "formatoPDF": { "bsonType": "string" }
+                }
+              }
+            }
+          },
+          "categoria": {
+            "bsonType": "string",
+            "enum": ["residencial", "comercial", "industrial", "infraestrutura", "reforma", "geral"],
+            "description": "Categoria do template"
+          },
+          "ativo": {
+            "bsonType": "bool",
+            "description": "Template ativo"
+          },
+          "criadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "atualizadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

@@ -1,0 +1,87 @@
+
+{
+  "name": "compras",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["planejamentoId", "materialId", "quantidade", "status", "criadoEm"],
+        "properties": {
+          "planejamentoId": {
+            "bsonType": "string",
+            "description": "ID do planejamento que solicitou"
+          },
+          "materialId": {
+            "bsonType": "string",
+            "description": "ID do material solicitado"
+          },
+          "nomeMaterial": {
+            "bsonType": "string",
+            "description": "Nome do material"
+          },
+          "quantidade": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Quantidade solicitada"
+          },
+          "status": {
+            "bsonType": "string",
+            "enum": ["enviado", "em_cotacao", "negado", "aprovado", "comprado", "em_estoque", "na_obra"],
+            "description": "Status da solicitação"
+          },
+          "cotacoes": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "fornecedorId": {"bsonType": "string"},
+                "nomeFornecedor": {"bsonType": "string"},
+                "preco": {"bsonType": "number"},
+                "prazoEntrega": {"bsonType": "int"},
+                "condicoesPagamento": {"bsonType": "string"},
+                "selecionado": {"bsonType": "bool"}
+              }
+            }
+          },
+          "fornecedorEscolhido": {
+            "bsonType": "object",
+            "properties": {
+              "fornecedorId": {"bsonType": "string"},
+              "nomeFornecedor": {"bsonType": "string"},
+              "preco": {"bsonType": "number"},
+              "formaPagamento": {"bsonType": "string"},
+              "dataPagamento": {"bsonType": "string", "title": "datetime"}
+            }
+          },
+          "dataCompra": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data da compra"
+          },
+          "dataEntrega": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de entrega prevista"
+          },
+          "valorTotal": {
+            "bsonType": "number",
+            "description": "Valor total da compra"
+          },
+          "criadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "atualizadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

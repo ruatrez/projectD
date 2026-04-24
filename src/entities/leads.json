@@ -1,0 +1,57 @@
+
+{
+  "name": "leads",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["nome", "contato", "estagio", "origem", "valor", "responsavel", "criadoEm"],
+        "properties": {
+          "nome": {
+            "bsonType": "string",
+            "description": "Nome do lead"
+          },
+          "contato": {
+            "bsonType": "string",
+            "description": "Contato do lead"
+          },
+          "estagio": {
+            "bsonType": "string",
+            "enum": ["prospect", "negociacao", "fechado", "perdido"],
+            "description": "Estágio do lead"
+          },
+          "origem": {
+            "bsonType": "string",
+            "description": "Origem do lead"
+          },
+          "valor": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Valor do lead"
+          },
+          "responsavel": {
+            "bsonType": "string",
+            "description": "Responsável pelo lead"
+          },
+          "historico": {
+            "bsonType": "array",
+            "description": "Histórico de interações"
+          },
+          "criadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "atualizadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

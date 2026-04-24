@@ -1,0 +1,142 @@
+
+{
+  "name": "diarios",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["planejamentoId", "tipo", "data", "responsavel", "criadoEm"],
+        "properties": {
+          "planejamentoId": {
+            "bsonType": "string",
+            "description": "ID do planejamento/obra"
+          },
+          "tipo": {
+            "bsonType": "string",
+            "enum": ["diario", "semanal"],
+            "description": "Tipo do diário"
+          },
+          "data": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data do registro"
+          },
+          "responsavel": {
+            "bsonType": "string",
+            "description": "Responsável pelo registro"
+          },
+          "local": {
+            "bsonType": "string",
+            "description": "Local da obra"
+          },
+          "clima": {
+            "bsonType": "object",
+            "properties": {
+              "manha": {"bsonType": "string", "enum": ["sol", "chuva", "nublado"]},
+              "tarde": {"bsonType": "string", "enum": ["sol", "chuva", "nublado"]},
+              "noite": {"bsonType": "string", "enum": ["sol", "chuva", "nublado"]}
+            }
+          },
+          "maoDeObra": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "funcionarioId": {"bsonType": "string"},
+                "nome": {"bsonType": "string"},
+                "funcao": {"bsonType": "string"},
+                "horasTrabalhadas": {"bsonType": "number"}
+              }
+            }
+          },
+          "equipamentos": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "nome": {"bsonType": "string"},
+                "horasUso": {"bsonType": "number"},
+                "observacoes": {"bsonType": "string"}
+              }
+            }
+          },
+          "atividades": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "descricao": {"bsonType": "string"},
+                "responsavel": {"bsonType": "string"},
+                "progresso": {"bsonType": "number"}
+              }
+            }
+          },
+          "fotos": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "url": {"bsonType": "string"},
+                "descricao": {"bsonType": "string"},
+                "timestamp": {"bsonType": "string", "title": "datetime"}
+              }
+            }
+          },
+          "naoConformidades": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "tipo": {"bsonType": "string", "enum": ["ocorrencia", "acidente", "inspecao"]},
+                "descricao": {"bsonType": "string"},
+                "gravidade": {"bsonType": "string", "enum": ["baixa", "media", "alta"]},
+                "acaoCorretiva": {"bsonType": "string"}
+              }
+            }
+          },
+          "checklistSeguranca": {
+            "bsonType": "object",
+            "properties": {
+              "epiUtilizado": {"bsonType": "bool"},
+              "areaIsolada": {"bsonType": "bool"},
+              "equipamentosFuncionando": {"bsonType": "bool"},
+              "observacoes": {"bsonType": "string"}
+            }
+          },
+          "documentos": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "nome": {"bsonType": "string"},
+                "url": {"bsonType": "string"},
+                "tipo": {"bsonType": "string"}
+              }
+            }
+          },
+          "medicao": {
+            "bsonType": "object",
+            "properties": {
+              "percentualConcluido": {"bsonType": "number"},
+              "valorMedicao": {"bsonType": "number"},
+              "observacoes": {"bsonType": "string"}
+            }
+          },
+          "criadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "atualizadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

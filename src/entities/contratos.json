@@ -1,0 +1,85 @@
+
+{
+  "name": "contratos",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["cliente", "status", "nomeProjeto", "valorTotal", "dataAssinatura", "criadoEm"],
+        "properties": {
+          "cliente": {
+            "bsonType": "string",
+            "description": "Nome do cliente"
+          },
+          "status": {
+            "bsonType": "string",
+            "enum": ["em_desenvolvimento", "enviado", "assinado", "cancelado"],
+            "description": "Status do contrato"
+          },
+          "nomeProjeto": {
+            "bsonType": "string",
+            "description": "Nome do projeto"
+          },
+          "valorTotal": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Valor total do contrato"
+          },
+          "dataAssinatura": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de assinatura do contrato"
+          },
+          "templateId": {
+            "bsonType": "string",
+            "description": "ID do template utilizado"
+          },
+          "orcamentoOrigemId": {
+            "bsonType": "string",
+            "description": "ID do orçamento que originou o contrato"
+          },
+          "conteudo": {
+            "bsonType": "string",
+            "description": "Conteúdo do contrato"
+          },
+          "aditivos": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "numero": {"bsonType": "int"},
+                "descricao": {"bsonType": "string"},
+                "valor": {"bsonType": "number"},
+                "data": {"bsonType": "string", "title": "datetime"}
+              }
+            }
+          },
+          "historico": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "data": {"bsonType": "string", "title": "datetime"},
+                "acao": {"bsonType": "string"},
+                "descricao": {"bsonType": "string"}
+              }
+            }
+          },
+          "criadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "atualizadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

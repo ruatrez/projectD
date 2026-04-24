@@ -1,0 +1,92 @@
+
+{
+  "name": "financeiro",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["tipo", "categoria", "valor", "data", "status", "criadoEm"],
+        "properties": {
+          "tipo": {
+            "bsonType": "string",
+            "enum": ["receita", "despesa", "provisao_receita", "provisao_despesa"],
+            "description": "Tipo da movimentação"
+          },
+          "categoria": {
+            "bsonType": "string",
+            "description": "Categoria da movimentação"
+          },
+          "descricao": {
+            "bsonType": "string",
+            "description": "Descrição da movimentação"
+          },
+          "valor": {
+            "bsonType": "number",
+            "description": "Valor da movimentação"
+          },
+          "data": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data da movimentação"
+          },
+          "dataVencimento": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de vencimento"
+          },
+          "status": {
+            "bsonType": "string",
+            "enum": ["pendente", "pago", "recebido", "atrasado", "cancelado"],
+            "description": "Status da movimentação"
+          },
+          "planejamentoId": {
+            "bsonType": "string",
+            "description": "ID do planejamento relacionado"
+          },
+          "compraId": {
+            "bsonType": "string",
+            "description": "ID da compra relacionada"
+          },
+          "diarioId": {
+            "bsonType": "string",
+            "description": "ID do diário relacionado"
+          },
+          "funcionarioId": {
+            "bsonType": "string",
+            "description": "ID do funcionário (para folha de pagamento)"
+          },
+          "formaPagamento": {
+            "bsonType": "string",
+            "description": "Forma de pagamento"
+          },
+          "observacoes": {
+            "bsonType": "string",
+            "description": "Observações"
+          },
+          "impostos": {
+            "bsonType": "object",
+            "properties": {
+              "pis": {"bsonType": "number"},
+              "cofins": {"bsonType": "number"},
+              "irrf": {"bsonType": "number"},
+              "inss": {"bsonType": "number"}
+            }
+          },
+          "criadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "atualizadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

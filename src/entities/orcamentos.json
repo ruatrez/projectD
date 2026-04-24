@@ -1,0 +1,77 @@
+
+{
+  "name": "orcamentos",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["cliente", "status", "nomeProjeto", "valorTotal", "criadoEm"],
+        "properties": {
+          "cliente": {
+            "bsonType": "string",
+            "description": "Nome do cliente"
+          },
+          "status": {
+            "bsonType": "string",
+            "enum": ["rascunho", "pendente", "aprovado", "juridico", "em_analise", "assinado", "perdido"],
+            "description": "Status do orçamento"
+          },
+          "nomeProjeto": {
+            "bsonType": "string",
+            "description": "Nome do projeto"
+          },
+          "bdi": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "BDI em percentual"
+          },
+          "margem": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Margem em percentual"
+          },
+          "desconto": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Desconto em percentual"
+          },
+          "valorTotal": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Valor total do orçamento"
+          },
+          "prazoValidade": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Prazo de validade"
+          },
+          "etapas": {
+            "bsonType": "array",
+            "description": "Etapas do orçamento"
+          },
+          "versoes": {
+            "bsonType": "array",
+            "description": "Histórico de versões"
+          },
+          "leadOrigemId": {
+            "bsonType": "string",
+            "description": "ID do lead de origem (se aplicável)"
+          },
+          "criadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "atualizadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

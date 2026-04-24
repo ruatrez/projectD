@@ -1,0 +1,98 @@
+
+{
+  "name": "estoque",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["insumoId", "quantidade", "valorUnitario", "criadoEm"],
+        "properties": {
+          "insumoId": {
+            "bsonType": "string",
+            "description": "ID do insumo na base"
+          },
+          "nomeInsumo": {
+            "bsonType": "string",
+            "description": "Nome do insumo"
+          },
+          "quantidade": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Quantidade em estoque"
+          },
+          "quantidadeMinima": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Quantidade mínima para alerta"
+          },
+          "valorUnitario": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Valor unitário atual"
+          },
+          "valorTotal": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Valor total em estoque"
+          },
+          "localizacao": {
+            "bsonType": "string",
+            "description": "Localização no estoque"
+          },
+          "dataVencimento": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de vencimento (se aplicável)"
+          },
+          "lote": {
+            "bsonType": "string",
+            "description": "Número do lote"
+          },
+          "fornecedorId": {
+            "bsonType": "string",
+            "description": "ID do fornecedor"
+          },
+          "dataUltimaEntrada": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data da última entrada"
+          },
+          "dataUltimaSaida": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data da última saída"
+          },
+          "movimentacoes": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "id": {"bsonType": "string"},
+                "tipo": {"bsonType": "string", "enum": ["entrada", "saida", "ajuste"]},
+                "quantidade": {"bsonType": "number"},
+                "motivo": {"bsonType": "string"},
+                "planejamentoId": {"bsonType": "string"},
+                "compraId": {"bsonType": "string"},
+                "data": {"bsonType": "string", "title": "datetime"},
+                "responsavel": {"bsonType": "string"}
+              }
+            }
+          },
+          "criadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "atualizadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

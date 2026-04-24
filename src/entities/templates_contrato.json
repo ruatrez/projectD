@@ -1,0 +1,99 @@
+
+{
+  "name": "templates_contrato",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["nome", "conteudo", "ativo", "criadoEm"],
+        "properties": {
+          "nome": {
+            "bsonType": "string",
+            "description": "Nome do template"
+          },
+          "conteudo": {
+            "bsonType": "string",
+            "description": "Conteúdo HTML do template com placeholders"
+          },
+          "descricao": {
+            "bsonType": "string",
+            "description": "Descrição do template"
+          },
+          "logoUrl": {
+            "bsonType": "string",
+            "description": "URL do logo da empresa para o template"
+          },
+          "recomendacoes": {
+            "bsonType": "string",
+            "description": "Recomendações de preenchimento do template"
+          },
+          "campos": {
+            "bsonType": "array",
+            "description": "Lista de campos dinâmicos do template",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "placeholder": {
+                  "bsonType": "string",
+                  "description": "Placeholder no template ex: {{NOME_CLIENTE}}"
+                },
+                "label": {
+                  "bsonType": "string",
+                  "description": "Label para exibição no formulário"
+                },
+                "tipo": {
+                  "bsonType": "string",
+                  "enum": ["texto", "data", "numero", "textarea"],
+                  "description": "Tipo do campo"
+                },
+                "obrigatorio": {
+                  "bsonType": "bool",
+                  "description": "Campo obrigatório"
+                }
+              }
+            }
+          },
+          "assinantes": {
+            "bsonType": "array",
+            "description": "Lista de assinantes padrão do template",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "nome": {
+                  "bsonType": "string",
+                  "description": "Nome do assinante"
+                },
+                "cargo": {
+                  "bsonType": "string",
+                  "description": "Cargo do assinante"
+                },
+                "tipo": {
+                  "bsonType": "string",
+                  "enum": ["contratante", "contratado", "testemunha"],
+                  "description": "Tipo de assinante"
+                }
+              }
+            }
+          },
+          "ativo": {
+            "bsonType": "bool",
+            "description": "Template ativo"
+          },
+          "criadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "atualizadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

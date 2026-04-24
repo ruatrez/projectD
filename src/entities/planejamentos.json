@@ -1,0 +1,185 @@
+
+{
+  "name": "planejamentos",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["contratoId", "nomeProjeto", "cliente", "status", "dataInicio"],
+        "properties": {
+          "contratoId": {
+            "bsonType": "string",
+            "description": "ID do contrato de origem"
+          },
+          "orcamentoId": {
+            "bsonType": "string",
+            "description": "ID do orçamento de origem"
+          },
+          "nomeProjeto": {
+            "bsonType": "string",
+            "description": "Nome do projeto"
+          },
+          "cliente": {
+            "bsonType": "string",
+            "description": "Nome do cliente"
+          },
+          "status": {
+            "bsonType": "string",
+            "enum": ["planejamento", "em_andamento", "pausado", "concluido", "cancelado"],
+            "description": "Status do planejamento"
+          },
+          "dataInicio": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de início do projeto"
+          },
+          "dataPrevisaoTermino": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data prevista para término"
+          },
+          "dataTerminoReal": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data real de término"
+          },
+          "valorOrcado": {
+            "bsonType": "number",
+            "description": "Valor orçado original"
+          },
+          "valorRealizado": {
+            "bsonType": "number",
+            "description": "Valor real gasto"
+          },
+          "progresso": {
+            "bsonType": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Progresso geral em porcentagem"
+          },
+          "etapas": {
+            "bsonType": "array",
+            "description": "Etapas do planejamento",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "id": { "bsonType": "string" },
+                "numero": { "bsonType": "string" },
+                "nome": { "bsonType": "string" },
+                "ordem": { "bsonType": "int" },
+                "status": { 
+                  "bsonType": "string",
+                  "enum": ["pendente", "em_andamento", "concluida", "atrasada"]
+                },
+                "dataInicioPrevisao": { "bsonType": "string", "title": "datetime" },
+                "dataTerminoPrevisao": { "bsonType": "string", "title": "datetime" },
+                "dataInicioReal": { "bsonType": "string", "title": "datetime" },
+                "dataTerminoReal": { "bsonType": "string", "title": "datetime" },
+                "progresso": { "bsonType": "number", "minimum": 0, "maximum": 100 },
+                "valorOrcado": { "bsonType": "number" },
+                "valorRealizado": { "bsonType": "number" },
+                "subetapas": {
+                  "bsonType": "array",
+                  "items": {
+                    "bsonType": "object",
+                    "properties": {
+                      "id": { "bsonType": "string" },
+                      "numero": { "bsonType": "string" },
+                      "nome": { "bsonType": "string" },
+                      "ordem": { "bsonType": "int" },
+                      "status": { 
+                        "bsonType": "string",
+                        "enum": ["pendente", "em_andamento", "concluida", "atrasada"]
+                      },
+                      "dataInicioPrevisao": { "bsonType": "string", "title": "datetime" },
+                      "dataTerminoPrevisao": { "bsonType": "string", "title": "datetime" },
+                      "dataInicioReal": { "bsonType": "string", "title": "datetime" },
+                      "dataTerminoReal": { "bsonType": "string", "title": "datetime" },
+                      "progresso": { "bsonType": "number", "minimum": 0, "maximum": 100 },
+                      "maoDeObra": {
+                        "bsonType": "array",
+                        "items": {
+                          "bsonType": "object",
+                          "properties": {
+                            "funcionarioId": { "bsonType": "string" },
+                            "nome": { "bsonType": "string" },
+                            "funcao": { "bsonType": "string" },
+                            "quantidade": { "bsonType": "int" },
+                            "valorHora": { "bsonType": "number" },
+                            "horasPrevisao": { "bsonType": "number" },
+                            "horasRealizadas": { "bsonType": "number" },
+                            "valorTotal": { "bsonType": "number" }
+                          }
+                        }
+                      },
+                      "materiais": {
+                        "bsonType": "array",
+                        "items": {
+                          "bsonType": "object",
+                          "properties": {
+                            "insumoId": { "bsonType": "string" },
+                            "nome": { "bsonType": "string" },
+                            "unidadeMedida": { "bsonType": "string" },
+                            "quantidadeNecessaria": { "bsonType": "number" },
+                            "quantidadeDisponivel": { "bsonType": "number" },
+                            "quantidadeSolicitada": { "bsonType": "number" },
+                            "valorUnitario": { "bsonType": "number" },
+                            "valorTotal": { "bsonType": "number" },
+                            "statusCompra": {
+                              "bsonType": "string",
+                              "enum": ["disponivel", "enviado", "em_cotacao", "negado", "aprovado", "comprado", "em_estoque", "na_obra"]
+                            },
+                            "solicitacaoCompraId": { "bsonType": "string" }
+                          }
+                        }
+                      },
+                      "valorOrcado": { "bsonType": "number" },
+                      "valorRealizado": { "bsonType": "number" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "alertas": {
+            "bsonType": "array",
+            "description": "Alertas automáticos",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "id": { "bsonType": "string" },
+                "tipo": { 
+                  "bsonType": "string",
+                  "enum": ["atraso", "material_aprovado", "material_comprado", "material_estoque", "material_obra", "custo_excedido"]
+                },
+                "titulo": { "bsonType": "string" },
+                "descricao": { "bsonType": "string" },
+                "etapaId": { "bsonType": "string" },
+                "subetapaId": { "bsonType": "string" },
+                "data": { "bsonType": "string", "title": "datetime" },
+                "lido": { "bsonType": "bool" }
+              }
+            }
+          },
+          "observacoes": {
+            "bsonType": "string",
+            "description": "Observações gerais"
+          },
+          "criadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "atualizadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

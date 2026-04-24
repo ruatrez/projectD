@@ -1,0 +1,232 @@
+
+{
+  "name": "funcionarios",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["nome", "cargo", "funcao", "cpf", "telefone", "email", "unidadeMedida", "valorHora", "ativo", "dataAdmissao", "criadoEm"],
+        "properties": {
+          "nome": {
+            "bsonType": "string",
+            "description": "Nome completo do funcionário"
+          },
+          "cargo": {
+            "bsonType": "string",
+            "description": "Cargo do funcionário"
+          },
+          "funcao": {
+            "bsonType": "string",
+            "description": "Função específica do funcionário"
+          },
+          "cpf": {
+            "bsonType": "string",
+            "description": "CPF do funcionário"
+          },
+          "rg": {
+            "bsonType": "string",
+            "description": "RG do funcionário"
+          },
+          "telefone": {
+            "bsonType": "string",
+            "description": "Telefone de contato"
+          },
+          "email": {
+            "bsonType": "string",
+            "description": "Email do funcionário"
+          },
+          "endereco": {
+            "bsonType": "object",
+            "properties": {
+              "rua": { "bsonType": "string" },
+              "bairro": { "bsonType": "string" },
+              "cidade": { "bsonType": "string" },
+              "estado": { "bsonType": "string" },
+              "cep": { "bsonType": "string" }
+            },
+            "additionalProperties": true
+          },
+          "dadosBancarios": {
+            "bsonType": "object",
+            "properties": {
+              "tipoPagamento": {
+                "bsonType": "string",
+                "enum": ["deposito", "pix"],
+                "description": "Tipo de pagamento: depósito ou PIX"
+              },
+              "banco": {
+                "bsonType": "string",
+                "description": "Nome do banco (para depósito)"
+              },
+              "agencia": {
+                "bsonType": "string",
+                "description": "Agência bancária (para depósito)"
+              },
+              "conta": {
+                "bsonType": "string",
+                "description": "Número da conta (para depósito)"
+              },
+              "tipoConta": {
+                "bsonType": "string",
+                "enum": ["corrente", "poupanca"],
+                "description": "Tipo de conta bancária"
+              },
+              "chavePix": {
+                "bsonType": "string",
+                "description": "Chave PIX (para PIX)"
+              },
+              "tipoChavePix": {
+                "bsonType": "string",
+                "enum": ["cpf", "email", "telefone", "aleatoria"],
+                "description": "Tipo da chave PIX"
+              },
+              "observacoes": {
+                "bsonType": "string",
+                "description": "Observações sobre dados bancários"
+              }
+            },
+            "additionalProperties": true
+          },
+          "diaPagamento": {
+            "bsonType": "int",
+            "minimum": 1,
+            "maximum": 31,
+            "description": "Dia do mês para pagamento (1-31)"
+          },
+          "unidadeMedida": {
+            "bsonType": "string",
+            "enum": ["hora", "dia", "mes"],
+            "description": "Unidade de medida para pagamento"
+          },
+          "valorHora": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Valor por hora trabalhada"
+          },
+          "valorDiaria": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Valor da diária"
+          },
+          "valorMensal": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Valor mensal"
+          },
+          "ativo": {
+            "bsonType": "bool",
+            "description": "Status ativo/inativo do funcionário"
+          },
+          "dataAdmissao": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de admissão do funcionário"
+          },
+          "dataDemissao": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de demissão (se aplicável)"
+          },
+          "ferias": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "id": { "bsonType": "string" },
+                "dataInicio": { "bsonType": "string", "title": "datetime" },
+                "dataFim": { "bsonType": "string", "title": "datetime" },
+                "diasCorridos": { "bsonType": "int" },
+                "diasUteis": { "bsonType": "int" },
+                "status": { "bsonType": "string", "enum": ["agendado", "em_andamento", "concluido"] },
+                "observacoes": { "bsonType": "string" },
+                "criadoEm": { "bsonType": "string", "title": "datetime" }
+              },
+              "additionalProperties": true
+            }
+          },
+          "licencas": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "id": { "bsonType": "string" },
+                "tipo": { "bsonType": "string", "enum": ["medica", "maternidade", "paternidade", "acidente", "outras"] },
+                "dataInicio": { "bsonType": "string", "title": "datetime" },
+                "dataFim": { "bsonType": "string", "title": "datetime" },
+                "diasCorridos": { "bsonType": "int" },
+                "remunerada": { "bsonType": "bool" },
+                "observacoes": { "bsonType": "string" },
+                "documentos": { "bsonType": "array" },
+                "status": { "bsonType": "string", "enum": ["ativa", "finalizada", "cancelada"] },
+                "criadoEm": { "bsonType": "string", "title": "datetime" }
+              },
+              "additionalProperties": true
+            }
+          },
+          "bancoHoras": {
+            "bsonType": "object",
+            "properties": {
+              "saldoHoras": { "bsonType": "number" },
+              "limiteMensal": { "bsonType": "number" },
+              "historico": {
+                "bsonType": "array",
+                "items": {
+                  "bsonType": "object",
+                  "properties": {
+                    "id": { "bsonType": "string" },
+                    "data": { "bsonType": "string", "title": "datetime" },
+                    "tipo": { "bsonType": "string", "enum": ["credito", "debito", "compensacao"] },
+                    "horas": { "bsonType": "number" },
+                    "descricao": { "bsonType": "string" },
+                    "aprovadoPor": { "bsonType": "string" },
+                    "criadoEm": { "bsonType": "string", "title": "datetime" }
+                  },
+                  "additionalProperties": true
+                }
+              }
+            },
+            "additionalProperties": true
+          },
+          "escala": {
+            "bsonType": "object",
+            "properties": {
+              "tipoEscala": { "bsonType": "string", "enum": ["normal", "plantao", "revezamento"] },
+              "horaInicio": { "bsonType": "string" },
+              "horaFim": { "bsonType": "string" },
+              "diasSemana": { "bsonType": "array" },
+              "observacoes": { "bsonType": "string" }
+            },
+            "additionalProperties": true
+          },
+          "qualificacoes": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "nome": { "bsonType": "string" },
+                "instituicao": { "bsonType": "string" },
+                "dataObtencao": { "bsonType": "string", "title": "datetime" },
+                "dataVencimento": { "bsonType": "string", "title": "datetime" },
+                "ativo": { "bsonType": "bool" }
+              },
+              "additionalProperties": true
+            }
+          },
+          "criadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação do registro"
+          },
+          "atualizadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data da última atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

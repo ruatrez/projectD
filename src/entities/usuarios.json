@@ -1,0 +1,48 @@
+
+{
+  "name": "usuarios",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["email", "senha", "nome", "nivelAcesso", "ativo", "criadoEm"],
+        "properties": {
+          "email": {
+            "bsonType": "string",
+            "description": "Email do usuário"
+          },
+          "senha": {
+            "bsonType": "string", 
+            "description": "Senha criptografada"
+          },
+          "nome": {
+            "bsonType": "string",
+            "description": "Nome completo do usuário"
+          },
+          "nivelAcesso": {
+            "bsonType": "string",
+            "enum": ["administrador", "juridico", "financeiro", "compras", "engenheiro", "gestor", "encarregado"],
+            "description": "Nível de acesso do usuário"
+          },
+          "ativo": {
+            "bsonType": "bool",
+            "description": "Status ativo/inativo"
+          },
+          "criadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "atualizadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

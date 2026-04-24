@@ -1,0 +1,61 @@
+
+{
+  "name": "insumos",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["nome", "tipo", "unidadeMedida", "precoUnitario", "criadoEm"],
+        "properties": {
+          "nome": {
+            "bsonType": "string",
+            "description": "Nome do insumo"
+          },
+          "tipo": {
+            "bsonType": "string",
+            "enum": ["material", "maoDeObra", "composicao"],
+            "description": "Tipo do insumo"
+          },
+          "unidadeMedida": {
+            "bsonType": "string",
+            "description": "Unidade de medida (m², kg, h, etc.)"
+          },
+          "precoUnitario": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Preço unitário"
+          },
+          "estoque": {
+            "bsonType": "object",
+            "properties": {
+              "temEstoque": {
+                "bsonType": "bool"
+              },
+              "quantidade": {
+                "bsonType": "number",
+                "minimum": 0
+              }
+            }
+          },
+          "composicao": {
+            "bsonType": "array",
+            "description": "Itens da composição (se tipo = composicao)"
+          },
+          "criadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "atualizadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

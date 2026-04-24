@@ -1,0 +1,50 @@
+
+{
+  "name": "planejamento_semanal",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["planejamentoId", "semana", "tarefas", "criadoEm"],
+        "properties": {
+          "planejamentoId": {
+            "bsonType": "string",
+            "description": "ID do planejamento da obra"
+          },
+          "semana": {
+            "bsonType": "string",
+            "description": "Semana do planejamento (YYYY-MM-DD)"
+          },
+          "tarefas": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "descricao": {"bsonType": "string"},
+                "funcionarioResponsavel": {"bsonType": "string"},
+                "funcionarioId": {"bsonType": "string"},
+                "prazo": {"bsonType": "string", "title": "datetime"},
+                "status": {"bsonType": "string", "enum": ["pendente", "em_andamento", "concluido", "cancelado"]},
+                "observacoes": {"bsonType": "string"},
+                "progresso": {"bsonType": "number", "minimum": 0, "maximum": 100}
+              }
+            }
+          },
+          "criadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "atualizadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

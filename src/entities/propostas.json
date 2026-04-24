@@ -1,0 +1,207 @@
+
+{
+  "name": "propostas",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "title": "Proposta",
+        "description": "Propostas comerciais com etapas, subetapas e insumos",
+        "additionalProperties": true,
+        "required": ["numero", "cliente", "nomeProjeto", "status", "valorTotal", "criadoEm"],
+        "properties": {
+          "numero": {
+            "bsonType": "string",
+            "description": "Número único da proposta"
+          },
+          "cliente": {
+            "bsonType": "string",
+            "description": "Nome do cliente"
+          },
+          "nomeProjeto": {
+            "bsonType": "string",
+            "description": "Nome do projeto"
+          },
+          "descricao": {
+            "bsonType": "string",
+            "description": "Descrição detalhada do projeto"
+          },
+          "status": {
+            "bsonType": "string",
+            "enum": ["rascunho", "enviado", "aprovado", "rejeitado", "revisao"],
+            "description": "Status atual da proposta"
+          },
+          "valorMaterial": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Valor total dos materiais"
+          },
+          "valorMaoObra": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Valor total da mão de obra"
+          },
+          "valorTotal": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Valor total da proposta"
+          },
+          "bdi": {
+            "bsonType": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Percentual de BDI"
+          },
+          "desconto": {
+            "bsonType": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Percentual de desconto"
+          },
+          "etapas": {
+            "bsonType": "array",
+            "description": "Lista de etapas da proposta",
+            "items": {
+              "bsonType": "object",
+              "required": ["id", "numero", "nome", "ordem"],
+              "properties": {
+                "id": {
+                  "bsonType": "string",
+                  "description": "ID único da etapa"
+                },
+                "numero": {
+                  "bsonType": "string",
+                  "description": "Número da etapa"
+                },
+                "nome": {
+                  "bsonType": "string",
+                  "description": "Nome da etapa"
+                },
+                "ordem": {
+                  "bsonType": "int",
+                  "minimum": 1,
+                  "description": "Ordem de execução da etapa"
+                },
+                "insumos": {
+                  "bsonType": "array",
+                  "description": "Insumos da etapa",
+                  "items": {
+                    "bsonType": "object",
+                    "required": ["id", "insumoId", "nome", "tipo", "quantidade", "valorUnitario", "valorTotal"],
+                    "properties": {
+                      "id": {
+                        "bsonType": "string"
+                      },
+                      "insumoId": {
+                        "bsonType": "string"
+                      },
+                      "nome": {
+                        "bsonType": "string"
+                      },
+                      "tipo": {
+                        "bsonType": "string",
+                        "enum": ["material", "maoDeObra"]
+                      },
+                      "unidadeMedida": {
+                        "bsonType": "string"
+                      },
+                      "quantidade": {
+                        "bsonType": "number",
+                        "minimum": 0
+                      },
+                      "valorUnitario": {
+                        "bsonType": "number",
+                        "minimum": 0
+                      },
+                      "valorTotal": {
+                        "bsonType": "number",
+                        "minimum": 0
+                      }
+                    }
+                  }
+                },
+                "subetapas": {
+                  "bsonType": "array",
+                  "description": "Subetapas da etapa",
+                  "items": {
+                    "bsonType": "object",
+                    "required": ["id", "numero", "nome"],
+                    "properties": {
+                      "id": {
+                        "bsonType": "string"
+                      },
+                      "numero": {
+                        "bsonType": "string"
+                      },
+                      "nome": {
+                        "bsonType": "string"
+                      },
+                      "insumos": {
+                        "bsonType": "array",
+                        "items": {
+                          "bsonType": "object",
+                          "required": ["id", "insumoId", "nome", "tipo", "quantidade", "valorUnitario", "valorTotal"],
+                          "properties": {
+                            "id": {
+                              "bsonType": "string"
+                            },
+                            "insumoId": {
+                              "bsonType": "string"
+                            },
+                            "nome": {
+                              "bsonType": "string"
+                            },
+                            "tipo": {
+                              "bsonType": "string",
+                              "enum": ["material", "maoDeObra"]
+                            },
+                            "unidadeMedida": {
+                              "bsonType": "string"
+                            },
+                            "quantidade": {
+                              "bsonType": "number",
+                              "minimum": 0
+                            },
+                            "valorUnitario": {
+                              "bsonType": "number",
+                              "minimum": 0
+                            },
+                            "valorTotal": {
+                              "bsonType": "number",
+                              "minimum": 0
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "observacoes": {
+            "bsonType": "string",
+            "description": "Observações gerais da proposta"
+          },
+          "validadeProposta": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de validade da proposta"
+          },
+          "criadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "atualizadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data da última atualização"
+          }
+        }
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

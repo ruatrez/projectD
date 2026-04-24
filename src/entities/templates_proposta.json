@@ -1,0 +1,117 @@
+
+{
+  "name": "templates_proposta",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "title": "TemplateProposta",
+        "description": "Templates para propostas comerciais",
+        "additionalProperties": true,
+        "required": ["nome", "descricao", "cabecalho", "rodape", "configuracoes"],
+        "properties": {
+          "nome": {
+            "bsonType": "string",
+            "description": "Nome do template"
+          },
+          "descricao": {
+            "bsonType": "string",
+            "description": "Descrição do template"
+          },
+          "logo": {
+            "bsonType": "string",
+            "description": "URL do logo da empresa"
+          },
+          "cabecalho": {
+            "bsonType": "object",
+            "description": "Informações do cabeçalho",
+            "required": ["empresa"],
+            "properties": {
+              "empresa": {
+                "bsonType": "string",
+                "description": "Nome da empresa"
+              },
+              "endereco": {
+                "bsonType": "string",
+                "description": "Endereço da empresa"
+              },
+              "telefone": {
+                "bsonType": "string",
+                "description": "Telefone da empresa"
+              },
+              "email": {
+                "bsonType": "string",
+                "description": "Email da empresa"
+              },
+              "cnpj": {
+                "bsonType": "string",
+                "description": "CNPJ da empresa"
+              }
+            }
+          },
+          "rodape": {
+            "bsonType": "object",
+            "description": "Informações do rodapé",
+            "properties": {
+              "condicoesPagamento": {
+                "bsonType": "string",
+                "description": "Condições de pagamento"
+              },
+              "validadeProposta": {
+                "bsonType": "string",
+                "description": "Texto sobre validade da proposta"
+              },
+              "observacoes": {
+                "bsonType": "string",
+                "description": "Observações gerais"
+              }
+            }
+          },
+          "configuracoes": {
+            "bsonType": "object",
+            "description": "Configurações de exibição",
+            "required": ["mostrarDetalhamento", "mostrarComposicao", "mostrarBDI", "mostrarDesconto"],
+            "properties": {
+              "mostrarDetalhamento": {
+                "bsonType": "bool",
+                "description": "Mostrar detalhamento dos itens"
+              },
+              "mostrarComposicao": {
+                "bsonType": "bool",
+                "description": "Mostrar composição dos insumos"
+              },
+              "mostrarBDI": {
+                "bsonType": "bool",
+                "description": "Mostrar BDI na proposta"
+              },
+              "mostrarDesconto": {
+                "bsonType": "bool",
+                "description": "Mostrar desconto na proposta"
+              },
+              "corPrimaria": {
+                "bsonType": "string",
+                "description": "Cor primária do template"
+              },
+              "corSecundaria": {
+                "bsonType": "string",
+                "description": "Cor secundária do template"
+              }
+            }
+          },
+          "criadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "atualizadoEm": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data da última atualização"
+          }
+        }
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

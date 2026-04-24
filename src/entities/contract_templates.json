@@ -1,0 +1,71 @@
+
+{
+  "name": "contract_templates",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["name", "type", "content", "variables", "status", "createdAt"],
+        "properties": {
+          "name": {
+            "bsonType": "string",
+            "description": "Nome do template"
+          },
+          "type": {
+            "bsonType": "string",
+            "enum": ["construcao", "reforma", "projeto", "manutencao", "consultoria"],
+            "description": "Tipo de contrato"
+          },
+          "content": {
+            "bsonType": "string",
+            "description": "Conteúdo HTML do template"
+          },
+          "variables": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "required": ["name", "label", "type"],
+              "properties": {
+                "name": {
+                  "bsonType": "string"
+                },
+                "label": {
+                  "bsonType": "string"
+                },
+                "type": {
+                  "bsonType": "string",
+                  "enum": ["text", "number", "date", "currency"]
+                },
+                "required": {
+                  "bsonType": "bool"
+                }
+              }
+            }
+          },
+          "status": {
+            "bsonType": "string",
+            "enum": ["ativo", "inativo"],
+            "description": "Status do template"
+          },
+          "creator": {
+            "bsonType": "string",
+            "description": "Criador do template"
+          },
+          "createdAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de criação"
+          },
+          "updatedAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Data de atualização"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}
