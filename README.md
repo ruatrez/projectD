@@ -1,4 +1,4 @@
-# GestPRO
+# GestPRO - Deceri Construções
 
 Aplicacao web para gestao de obras e processos da construcao civil. O projeto concentra operacoes comerciais, planejamento, compras, contratos, financeiro, diario de obra e controle de usuarios em uma interface unica.
 
